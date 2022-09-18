@@ -13,10 +13,12 @@ class VariantsController < ApplicationController
   # GET /variants/new
   def new
     @variant = Variant.new
+    @course_id = params[:course_id]
   end
 
   # GET /variants/1/edit
   def edit
+    @course = Course.find(@variant.course_id)
   end
 
   # POST /variants or /variants.json

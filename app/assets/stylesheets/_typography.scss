@@ -4,6 +4,7 @@
 .title {
 	font-family: "Monoton";
 	font-size: 50pt;
+	flex-wrap: wrap;
 
 	@include q.media('<=tablet') {
 		font-size: 35pt;

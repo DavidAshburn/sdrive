@@ -75,6 +75,14 @@ $font: "Raleway";
 		margin: 0;
 		padding: 1rem 2rem;
 	}
+
+	.group-button-warn {
+		background-color: colors.$warning;
+		color: colors.$dark;
+		text-decoration: none;
+		margin: 0;
+		padding: 1rem 2rem;
+	}
 }
 
 .btn-group .group-button:first-child {

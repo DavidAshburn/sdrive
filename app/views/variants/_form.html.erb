@@ -1,37 +1,51 @@
-<%= form_with(model: variant) do |form| %>
-  <% if variant.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
+<div data-controller="input">
+  <%= form_with(model: variant) do |form| %>
+    <% if variant.errors.any? %>
+      <div class="container-alert" data-controller="alert">
+        <div class="alert" role="alert">
+          <h2><%= pluralize(variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
 
-      <ul>
-        <% variant.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% variant.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+          <button class="btn-close" data-action="alert#close" aria-label="Close"><i class="fa-solid fa-x"></i></button>
+        </div>
+      </div>
+    <% end %>
+    <% if @variant.name == nil %>
+      <% @variant.name = "Enter Name" %>
+    <% end %>
+    <div class="stack-left">
+      <%= form.text_field :name, class:"rail-field", placeholder: @variant.name %>
+
+      <%= form.label :length, style: "display: block" %>
+      <%= select_tag :length, options_for_select([[9,1],[18,2]], 1), data: { action: "blur->input#setLength", target:"input.lengthselector" } %>
+
+      <div class="table col-8">
+        <div class="trow">
+          <div class="tdat">#</div>
+          <div class="tdat">Par</div>
+        </div>
+        <div id="parform">
+        </div>
+      </div>
     </div>
+
+    <%= form.number_field :course_id, id: :variant_course_id, class:"form-field", value:@course_id, type: :hidden %>
+    <%= form.text_field :pars, class:"form-field", data: { target:"input.variantparfield" }, type: :hidden %>
+
+    <div class="row-left">
+      <%= form.submit "Save Layout", class:"btn-flat" %>
+    </div>
+
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :pars, style: "display: block" %>
-    <%= form.text_field :pars %>
-  </div>
-
-  <div>
-    <%= form.label :length, style: "display: block" %>
-    <%= form.number_field :length %>
-  </div>
-
-  <div>
-    <%= form.label :course_id, style: "display: block" %>
-    <%= form.number_field :course_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+  <template>
+    <div class="trow">
+      <div class="tdat" id="holenumber">1</div>
+      <div class="tdat" id="par" data-input-target="par"><input type="text" class="form-field"></div>
+    </div>
+  </template>
+</div>

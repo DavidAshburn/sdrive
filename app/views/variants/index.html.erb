@@ -1,14 +1,32 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Variants</h1>
+<h1>Layouts</h1>
 
-<div id="variants">
-  <% @variants.each do |variant| %>
-    <%= render variant %>
-    <p>
-      <%= link_to "Show this variant", variant %>
-    </p>
-  <% end %>
+<div id="stack-left col-12">
+     <table>
+       <thead>
+         <tr>
+          <th>Variant</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>           
+        </tr>
+       </thead>
+      <tbody>
+
+        <% @variants.each do |variant| %>
+          <tr>
+            <td><%= link_to variant.name, variant, class:"btn btn-success" %></td>
+            <% variant.pars.split('').each do |char| %>
+              <td><%= char %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
-
-<%= link_to "New variant", new_variant_path %>

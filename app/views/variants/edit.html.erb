@@ -1,10 +1,63 @@
-<h1>Editing variant</h1>
+<div class="stack-left col-12">
+  <div class="title">Edit Variant</div>
+  <%= form_with(model: @variant) do |form| %>
+    <% if @variant.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
 
-<%= render "form", variant: @variant %>
+        <ul>
+          <% @variant.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<br>
+  <div class="row-left col-9">
+    <%= form.text_field :name, class:"form-field", value: @variant.name %>
+  </div>
 
-<div>
-  <%= link_to "Show this variant", @variant %> |
-  <%= link_to "Back to variants", variants_path %>
+  <% if @variant.pars %>
+    <% parray = @variant.pars.split('') %>
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Par</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% (0..8).each do |x| %>
+          <tr>
+            <td><b><%= x + 1 %></b></td>
+            <td>
+              <%= form.text_field :pars, class:"form-field", value:parray[x] %>
+            </td>
+          </tr>
+        <% end %>
+        <% if @variant.length == 18 %>
+          <% (9..17).each do |x| %>
+          <tr>
+            <td><b><%= x + 1 %></b></td>
+            <td>
+              <%= form.text_field :pars, class:"form-field", value:parray[x] %>
+            </td>
+          </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <%= form.submit "Edit Layout", class:"btn btn-success" %>
+
+  <% end %>
+
+  <div class="btn-group">
+    <%= link_to "Back to Course", @course, class:"group-button" %>
+    <%= link_to "Destroy this layout", @variant, class:"group-button", method: :delete %>
+    <%= link_to "Home", home_profile_path, class:"group-button" %>
+  </div>
 </div>
