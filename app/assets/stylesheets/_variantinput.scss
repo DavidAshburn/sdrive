@@ -9,19 +9,34 @@
 }
 
 .holenumber {
+	display: flex;
+	justify-content: center;
 	font-family: "Righteous";
 	font-size: 25pt;
 	color: colors.$info;
-	width: 11.11%;
-	margin: .1rem;
+	background-color: rgba(20,20,20,.2);
+	border-radius: 50%;
+	@include q.media('<=phone') {
+		width: 20vw;
+	}
+	@include q.media('>phone') {
+		width: 11.11%;
+	}
 }
 
 .number-select {
+
 	font-size: 2rem;
-	width: 11.11%;
 	background-color: transparent;
 	margin: .1rem;
 	border: none;
+
+	@include q.media('<=phone') {
+		width: 20vw;
+	}
+	@include q.media('>phone') {
+		width: 11%;
+	}
 }
 
 .length-select {
@@ -37,7 +52,6 @@
 	display: flex;
 	width: 100%;
 	justify-content: center;
-	border: 1px solid green;
 
 	@include q.media('<desktop') {
 		flex-direction: column;
@@ -47,10 +61,8 @@
 		display: flex;
 		font-family: "Monoton";
 		font-size: 50pt;
-		flex-wrap: wrap;
 		padding: 1rem;
 		justify-content: center;
-		border: 1px solid white;
 
 		@include q.media('<desktop') {
 			width: 100%;
@@ -85,11 +97,13 @@
 			.row-par {
 				display: flex;
 				justify-content: center;
-				border: 2px solid orange;
 
 				@include q.media('<=phone') {
 					flex-direction: column;
-					width: 25%;
+					width: 20vw;
+				}
+				@include q.media('>phone') {
+					width: 100%;
 				}
 			}
 		}

@@ -31,10 +31,10 @@ static targets = [
     let parbox2_out = document.createElement("div");
     let labels1_out = document.createElement("div");
     let labels2_out = document.createElement("div");
-    parbox1_out.classList.add("row-center", "col-7");
-    parbox2_out.classList.add("row-center", "col-7");
-    labels1_out.classList.add("row-center", "col-7");
-    labels2_out.classList.add("row-center", "col-7");
+    parbox1_out.classList.add("row-par", "col-7");
+    parbox2_out.classList.add("row-par", "col-7");
+    labels1_out.classList.add("row-par", "col-7");
+    labels2_out.classList.add("row-par", "col-7");
 
     //generate input fields based on selected length
     for(let i = 1; i <= length * 9; i++) {

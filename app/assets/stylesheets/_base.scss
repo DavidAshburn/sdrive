@@ -63,7 +63,6 @@ img {
 %stack {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid red;
 }
 
 .stack {
@@ -86,7 +85,6 @@ img {
 // Rows
 %row {
 	display: flex;
-	border: 1px solid blue;
 
 	@include q.media('<=465px') {
 		flex-direction: column;
