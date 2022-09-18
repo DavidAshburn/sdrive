@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+config/initializers/devise
 
-Things you may want to cover:
+# The "*/*" below is required to match Internet Explorer requests.
+config.navigational_formats = ['*/*', :html, :turbostream]
 
-* Ruby version
+# The default HTTP method used to sign out a resource. Default is :delete.
+config.sign_out_via = :get
 
-* System dependencies
+##After cloning this repository
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-bundle install
+-rails stimulus:install
+-fix js controller index, overwritten by stimulus:install
+-db:create db:migrate
