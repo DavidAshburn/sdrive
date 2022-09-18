@@ -46,7 +46,7 @@ img {
 }
 
 
-// Grid with Flexbox, I would rather use % instead of vw
+// Grid with Flexbox, I would rather use % instead of vw, these don't scale to the container
 
 @each $val in $sizes {
 	$div: (math.div($val, 12)) * 100;
@@ -65,6 +65,7 @@ img {
 %stack {
 	display: flex;
 	flex-direction: column;
+	border: 1px solid red;
 }
 
 .stack {
@@ -87,6 +88,7 @@ img {
 // Rows
 %row {
 	display: flex;
+	border: 1px solid blue;
 	@include q.media('<=465px') {
 		flex-direction: column;
 	}
@@ -145,60 +147,3 @@ img {
 }
 
 // Testing Classes
-
-.flex-item {
-	width: 5rem;
-	min-height: 3rem;
-	max-height: 3rem;
-	margin: 10px;
-	padding: .5rem;
-	border: 3px solid black;
-	border-radius: .5rem 1rem .5rem 1rem;
-	text-align: center;
-
-	@include colors.color-scheme(colors.$scheme-primary ...);
-}
-
-.layer {
-	height: 70vh;
-	background-color: colors.$primary;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 24px;
-
-	@include q.media('<=phone') {
-		background-color: colors.$warning;
-		&:before {
-			content: 'Phone Viewport';
-		}
-	}
-
-	@include q.media('>phone', '<=tablet') {
-		background-color: colors.$danger;
-		&:before {
-			content: 'Tablet Viewport';
-		}
-	}
-
-	@include q.media('>tablet', '<=desktop') {
-		background-color: colors.$success;
-		&:before {
-			content: 'Desktop Viewport';
-		}
-	}
-
-	@include q.media('>desktop', '<=LGdesktop') {
-		background-color: colors.$secondary;
-		&:before {
-			content: 'Large Desktop Viewport';
-		}
-	}
-
-	@include q.media('>LGdesktop') {
-		background-color: colors.$primary;
-		&:before {
-			content: 'Dinosauric Desktop Viewport';
-		}
-	}
-}

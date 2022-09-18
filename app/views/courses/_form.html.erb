@@ -12,21 +12,11 @@
       </div>
     </div>
   <% end %>
-  <div class="stack-left col-8">
-    <div class="row-left">
-      <%= form.text_field :name, class:"rail-field", placeholder:"Course Name" %>
-    </div>
-    <div class="row-left">
-      <%= form.text_field :city, class:"rail-field", placeholder:"City" %>
-    </div>
-    <div class="row-left">
-      <%= form.text_field :state, class:"rail-field", placeholder:"State" %>
-    </div>
-    <div class="row-left">
-      <%= form.number_field :user_id, id: :course_user_id, value:current_user.id, type: :hidden %>
-    </div>
-    <div class="row-left">
-      <%= form.submit class:"btn-flat" %>
-    </div>
+  <div class="stack-center col-8">
+    <%= form.text_field :name, class:"rail-field", placeholder:"Course Name" %>
+    <%= form.text_field :city, class:"rail-field", placeholder:"City" %>
+    <%= form.text_field :state, class:"rail-field", placeholder:"State" %>
+    <%= form.number_field :user_id, id: :course_user_id, value:current_user.id, type: :hidden %>
+    <%= form.submit class:"btn-flat" %>
   </div>
 <% end %>
