@@ -1,0 +1,205 @@
+@use 'colors';
+@use 'sass:math';
+@use 'queries' as q;
+@import url('https://fonts.googleapis.com/css?family=Raleway|Monoton|Righteous');
+
+$sizes: 1,2,3,4,5,6,7,8,9,10,11,12;
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	color: black;
+	height: 100vh;
+	font-family: "Raleway";
+	background: hsla(298, 68%, 90%, 1);
+	background: linear-gradient(110deg, colors.$turqoise 0%, colors.$slime 50%, colors.$info 100%);
+	background-attachment: fixed;
+}
+
+body {
+	font-family: "Raleway";
+}
+
+ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+
+// Blank container
+.container-fluid {
+	width: 99vw;
+}
+
+
+// Grid with Flexbox, I would rather use % instead of vw
+
+@each $val in $sizes {
+	$div: (math.div($val, 12)) * 100;
+
+	.col-#{$val} {
+		width: #{$div}vw;
+	}
+}
+
+.col-wide {
+	width: 100%;
+}
+
+
+// Flexbox containers
+%stack {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid red;
+}
+
+.stack {
+	&-left {
+		@extend %stack;
+		align-items: flex-start;
+	}
+
+	&-right {
+		@extend %stack;
+		align-items: flex-end;
+	}
+
+	&-center {
+		@extend %stack;
+		align-items: center;
+	}
+}
+
+// Rows
+%row {
+	display: flex;
+	@include q.media('<=tablet') {
+		flex-direction: column;
+	}
+}
+
+.row {
+	&-left {
+		@extend %row;
+		justify-content: flex-start;
+	}
+
+	&-right {
+		@extend %row;
+		justify-content: flex-end;
+	}
+
+	&-center {
+		@extend %row;
+		justify-content: center;
+	}
+
+	&-between {
+		@extend %row;
+		justify-content: space-between;
+	}
+
+	&-even {
+		@extend %row;
+		justify-content: space-evenly;
+	}
+}
+
+// Alerts
+
+.container-alert {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	position: fixed;
+	width: 100vw;
+	botom: 10px;
+}
+
+.alert {
+	display: flex;
+	width: 80vw;
+	border: 1px solid darken(colors.$success, 25%);
+	background-color: colors.$success;
+	border-radius: 3.2rem .8rem 3.2rem .8rem;
+	font-family: "Raleway";
+	color: darken(colors.$success, 25%);
+	padding: 1rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+// Testing Classes
+
+.flex-item {
+	width: 5rem;
+	min-height: 3rem;
+	max-height: 3rem;
+	margin: 10px;
+	padding: .5rem;
+	border: 3px solid black;
+	border-radius: .5rem 1rem .5rem 1rem;
+	text-align: center;
+
+	@include colors.color-scheme(colors.$scheme-primary ...);
+}
+
+.layer {
+	height: 70vh;
+	background-color: colors.$primary;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+
+	@include q.media('<=phone') {
+		background-color: colors.$warning;
+		&:before {
+			content: 'Phone Viewport';
+		}
+	}
+
+	@include q.media('>phone', '<=tablet') {
+		background-color: colors.$danger;
+		&:before {
+			content: 'Tablet Viewport';
+		}
+	}
+
+	@include q.media('>tablet', '<=desktop') {
+		background-color: colors.$success;
+		&:before {
+			content: 'Desktop Viewport';
+		}
+	}
+
+	@include q.media('>desktop', '<=LGdesktop') {
+		background-color: colors.$secondary;
+		&:before {
+			content: 'Large Desktop Viewport';
+		}
+	}
+
+	@include q.media('>LGdesktop') {
+		background-color: colors.$primary;
+		&:before {
+			content: 'Dinosauric Desktop Viewport';
+		}
+	}
+}

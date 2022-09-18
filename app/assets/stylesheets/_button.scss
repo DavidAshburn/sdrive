@@ -1,0 +1,105 @@
+@use 'colors';
+
+$font: "Raleway";
+
+%btn {
+	text-decoration: none;
+	margin: 1rem;
+	padding: 1rem 2rem;
+	border-radius: 3.2rem .8rem 3.2rem .8rem;
+	border: none;
+	font-size: inherit;
+}
+
+
+
+.btn-flat {
+	@extend %btn;
+	@include colors.color-scheme(colors.$scheme-secondary ...);
+
+
+	&:hover {
+		@include colors.color-scheme(colors.$scheme-primary ...);
+	}
+
+	&:active {
+		@include colors.color-scheme(colors.$scheme-dark ...);
+	}
+}
+
+.btn-info {
+	@extend %btn;
+	@include colors.color-scheme(colors.$scheme-light ...);
+
+	&:hover {
+		@include colors.color-scheme(colors.$scheme-secondary ...);
+	}
+
+	&:active {
+		@include colors.color-scheme(colors.$scheme-primary ...);
+	}
+}
+
+.btn-sm-info {
+	@extend %btn;
+	@include colors.color-scheme(colors.$scheme-light ...);
+	margin: .5rem;
+	padding: .5rem 1rem;
+
+	&:hover {
+		@include colors.color-scheme(colors.$scheme-secondary ...);
+	}
+
+	&:active {
+		@include colors.color-scheme(colors.$scheme-primary ...);
+	}
+}
+
+.btn-close {
+	background-color: colors.$primary;
+	border: 1px solid colors.$dark;
+	border-radius: 2px;
+}
+
+// Button Groups
+
+.btn-group {
+	display: flex;
+	gap: 0;
+	padding-top: 1rem;
+
+	.group-button {
+		background-color: colors.$secondary;
+		color: colors.$dark;
+		text-decoration: none;
+		margin: 0;
+		padding: 1rem 2rem;
+	}
+}
+
+.btn-group .group-button:first-child {
+	border-radius: 3.2rem 0 0 .8rem;
+}
+
+.btn-group .group-button:not(:last-child) {
+	border-right: none;
+}
+
+.btn-group .group-button:not(:first-child) {
+	border-left: 1px solid colors.$border;
+}
+
+.btn-group .group-button:last-child {
+	border-radius: 0 .8rem 3.2rem 0;
+}
+
+.group-button:hover {
+  background-color: colors.$primary;
+  color: colors.$info;
+}
+
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}

@@ -1,0 +1,6 @@
+Base styles for tables needed
+
+Components
+	-Cards
+	-Scrolling Table
+	-Basic Display Patterns

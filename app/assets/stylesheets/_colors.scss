@@ -1,0 +1,71 @@
+@use 'sass:list';
+
+$turqoise: #0081a7;
+$aqua: #00afb9;
+$cream: #fdfcdc;
+$peach: #fed9b7;
+$coral: #f07167;
+$grey: grey;
+$charcoal: #003d5b;
+$teal: #78c893;
+$slime: #d9ed92;
+$white: whitesmoke;
+
+
+//Reference Colors
+$light: $grey;
+$dark: $charcoal;
+$border: $charcoal;
+
+$primary: $turqoise;
+$secondary: $aqua;
+$info: $cream;
+$warning: $peach;
+$danger: $coral;
+$success: $teal;
+$attention: $slime;
+
+
+//Theme Variables
+$gradient-simple: $secondary, $info;
+$gradient-complex: $primary, $secondary, $success, $slime, $info, $warning, $danger;
+
+$scheme-primary: $info, $primary;
+$scheme-secondary: $dark, $secondary;
+
+$scheme-dark: $info, $dark;
+$scheme-light: $primary, $info;
+
+$scheme-simple-gradient: $dark, $gradient-simple;
+$scheme-complex-gradient: $dark, $gradient-complex;
+
+
+@mixin color-scheme($text, $bg) {
+
+	@if list.length($bg) == 1 {
+		background-color: $bg;
+	} @else {
+		background-image: linear-gradient(to right, $bg);
+	}
+	color: $text;
+}
+
+.theme-primary {
+	@include color-scheme($scheme-primary ...);
+}
+
+.theme-secondary {
+	@include color-scheme($scheme-secondary ...);
+}
+
+.theme-rainbow {
+	@include color-scheme($scheme-complex-gradient ...);
+}
+
+.theme-dark {
+	@include color-scheme($scheme-dark ...);
+}
+
+.theme-info {
+	@include color-scheme($scheme-light ...);
+}

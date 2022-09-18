@@ -1,0 +1,57 @@
+@use 'colors';
+@use 'queries' as q;
+
+.title {
+	font-family: "Monoton";
+	font-size: 50pt;
+
+	@include q.media('<=tablet') {
+		font-size: 35pt;
+	}
+
+	@include q.media('<=phone') {
+		font-size: 25pt;
+	}
+}
+
+.subtitle {
+	font-family: "Righteous";
+	font-size: 25pt;
+	color: colors.$dark;
+}
+
+.listtitle {
+	font-family: "Righteous";
+	font-size: 25pt;
+	padding-top: 1rem;
+	color: colors.$dark;
+}
+
+.muted {
+	font-family: "Raleway";
+	font-size: 18pt;
+	color: colors.$info;
+}
+
+.hero-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	gap: 1rem;
+	margin-bottom: 2rem;
+
+	h1 {
+		font-family: "Monoton";
+		font-size: 60pt;
+
+		@include q.media('<=tablet') {
+			font-size: 40pt;
+		}
+
+		@include q.media('<=phone') {
+			font-size: 30pt;
+		}
+	}
+}
