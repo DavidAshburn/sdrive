@@ -12,7 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <% if notice %>
-    <%= render 'layouts/alerts' %>
+    <div class="stack-center col-12">
+      <%= render 'layouts/alerts' %>
+    </div>
   <% end %>
   <% if user_signed_in? %>
     <%= render 'layouts/nav' %>

@@ -71,17 +71,17 @@ $font: "Raleway";
 }
 
 .btn-close {
-	background-color: colors.$primary;
+	background-color: transparent;
 	border: 1px solid colors.$dark;
 	border-radius: 2px;
+	margin-right: 1rem;
 }
 
 // Button Groups
 
 .btn-group {
 	display: flex;
-	gap: 0;
-	padding-top: 1rem;
+	padding: 1rem 2rem;
 
 	.group-button {
 		background-color: colors.$secondary;
