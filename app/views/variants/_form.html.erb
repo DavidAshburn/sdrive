@@ -17,18 +17,28 @@
     <% if @variant.name == nil %>
       <% @variant.name = "Enter Name" %>
     <% end %>
-    <div class="stack-left">
+    <div class="stack-center">
       <%= form.text_field :name, class:"rail-field", placeholder: @variant.name %>
+      <div class="row-center col-3">
+        <%= form.label :length, style: "display: block" %>
+        <select name="length" id="length" data-action="input#setLength" data-input-target="lengthselector">
+          <option selected="selected" value="1">9</option>
+          <option value="2">18</option>
+        </select>
+      </div>
 
-      <%= form.label :length, style: "display: block" %>
-      <%= select_tag :length, options_for_select([[9,1],[18,2]], 1), data: { action: "blur->input#setLength", target:"input.lengthselector" } %>
-
-      <div class="table col-8">
-        <div class="trow">
-          <div class="tdat">#</div>
-          <div class="tdat">Par</div>
+      <div class="stack-left">
+        <div class="row-center col-8" id="labels9">
+          <div></div>
         </div>
-        <div id="parform">
+        <div class="row-center" id="parform9">
+          <div></div>
+        </div>
+        <div class="row-center" id="labels18">
+          <div></div>
+        </div>
+        <div class="row-center" id="parform18">
+          <div></div>
         </div>
       </div>
     </div>
@@ -36,16 +46,9 @@
     <%= form.number_field :course_id, id: :variant_course_id, class:"form-field", value:@course_id, type: :hidden %>
     <%= form.text_field :pars, class:"form-field", data: { target:"input.variantparfield" }, type: :hidden %>
 
-    <div class="row-left">
+    <div class="row-left col-2">
       <%= form.submit "Save Layout", class:"btn-flat" %>
     </div>
 
   <% end %>
-
-  <template>
-    <div class="trow">
-      <div class="tdat" id="holenumber">1</div>
-      <div class="tdat" id="par" data-input-target="par"><input type="text" class="form-field"></div>
-    </div>
-  </template>
 </div>

@@ -27,6 +27,13 @@
 	font-size: 14pt;
 }
 
+.number-select {
+	font-size: 2rem;
+	width: 3rem;
+	background-color: transparent;
+	border: none;
+}
+
 textarea {
 	@extend %formbase;
 	width: 40vw;
