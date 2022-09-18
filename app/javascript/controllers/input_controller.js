@@ -18,9 +18,9 @@ static targets = [
 
   //executes when user changes the length on add_variant view
   setLength() {
-    console.log("setLength");
+
     //grab the length and the target divs to output our par input rows
-    let length = parseInt(this.lengthselectorTarget.value);
+    let length = this.lengthselectorTarget.value;
     let parbox1 = document.querySelector('#parform1');
     let parbox2 = document.querySelector('#parform2');
     let labels1 = document.querySelector('#labels1');
