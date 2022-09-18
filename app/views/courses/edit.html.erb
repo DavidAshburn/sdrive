@@ -1,10 +1,15 @@
-<h1>Editing course</h1>
+<div class="stack-center col-12">
+  <div class="row-center">   
+    <h2 class="title">Edit Course</h2>
+  </div>
+  <div class="row-center">  
+    <%= render "form", course: @course %>
+  </div>
+    <br>
 
-<%= render "form", course: @course %>
-
-<br>
-
-<div>
-  <%= link_to "Show this course", @course %> |
-  <%= link_to "Back to courses", courses_path %>
+  <div class="btn-group">
+    <%= link_to "Show Course", @course, class:"group-button" %>
+    <%= link_to "Your Courses", courses_path, class:"group-button" %>
+    <%= link_to "Home", home_profile_path, class:"group-button" %>
+  </div>
 </div>

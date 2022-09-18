@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Courses</h1>
-
-<div id="courses">
-  <% @courses.each do |course| %>
-    <%= render course %>
-    <p>
-      <%= link_to "Show this course", course %>
-    </p>
-  <% end %>
+<div class="stack-center col-12">
+  <div class="row-center">   
+    <h2 class="title">Courses</h2>
+  </div>
+  <div class="stack-center col-8" id="courses">
+    <% @courses.each do |course| %>
+      <% if course.user_id == current_user.id %>
+        <%= render course %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row-center">  
+    <%= link_to "New course", new_course_path, class:"btn-flat" %>
+  </div>
 </div>
-
-<%= link_to "New course", new_course_path %>

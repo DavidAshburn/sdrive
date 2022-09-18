@@ -1,37 +1,32 @@
 <%= form_with(model: course) do |form| %>
   <% if course.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-      <ul>
-        <% course.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="container-alert" data-controller="alert">
+      <div class="alert" role="alert">
+        <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+        <ul>
+          <% course.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+        <button class="btn-close" data-action="alert#close" aria-label="Close"><i class="fa-solid fa-x"></i></button>
+      </div>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="stack-left col-8">
+    <div class="row-left">
+      <%= form.text_field :name, class:"rail-field", placeholder:"Course Name" %>
+    </div>
+    <div class="row-left">
+      <%= form.text_field :city, class:"rail-field", placeholder:"City" %>
+    </div>
+    <div class="row-left">
+      <%= form.text_field :state, class:"rail-field", placeholder:"State" %>
+    </div>
+    <div class="row-left">
+      <%= form.number_field :user_id, id: :course_user_id, value:current_user.id, type: :hidden %>
+    </div>
+    <div class="row-left">
+      <%= form.submit class:"btn-flat" %>
+    </div>
   </div>
 <% end %>

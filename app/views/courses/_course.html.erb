@@ -1,22 +1,13 @@
+
 <div id="<%= dom_id course %>">
-  <p>
-    <strong>Name:</strong>
-    <%= course.name %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= course.city %>
-  </p>
-
-  <p>
-    <strong>State:</strong>
-    <%= course.state %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= course.user_id %>
-  </p>
-
+  <div class="stack-center col-12">
+    <%= link_to "#{course.name}", course, class:"subtitle" %>
+    <div class="stack-center"> 
+      <%= "#{course.city}, #{course.state}" %>
+    </div>
+    <% course.variants.each do |variant| %>
+      <h6 class="subtitle"><%= variant.name %></h6>
+    <% end %>
+  </div>
 </div>
+

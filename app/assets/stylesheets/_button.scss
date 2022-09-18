@@ -27,6 +27,21 @@ $font: "Raleway";
 	}
 }
 
+.btn-warn {
+	@extend %btn;
+	@include colors.color-scheme(colors.$scheme-warning ...);
+
+
+	&:hover {
+		@include colors.color-scheme(colors.$scheme-light ...);
+	}
+
+	&:active {
+		@include colors.color-scheme(colors.$scheme-danger ...);
+	}
+}
+
+
 .btn-info {
 	@extend %btn;
 	@include colors.color-scheme(colors.$scheme-light ...);
