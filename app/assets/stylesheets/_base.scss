@@ -14,7 +14,7 @@ html {
 	height: 100vh;
 	font-family: "Raleway";
 	background: hsla(298, 68%, 90%, 1);
-	background: linear-gradient(110deg, colors.$turqoise 0%, colors.$slime 50%, colors.$info 100%);
+	background: linear-gradient(90deg, colors.$turqoise 0%, colors.$aqua 30%, colors.$success 65%, colors.$peach 100%);
 	background-attachment: fixed;
 }
 
@@ -88,7 +88,7 @@ img {
 // Rows
 %row {
 	display: flex;
-	@include q.media('<=tablet') {
+	@include q.media('<=465px') {
 		flex-direction: column;
 	}
 }
