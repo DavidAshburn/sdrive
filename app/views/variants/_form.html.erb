@@ -19,28 +19,27 @@
     <% end %>
     <div class="stack-center">
       <%= form.text_field :name, class:"rail-field", placeholder: @variant.name %>
-      <div class="row-center col-3">
-        <%= form.label :length, style: "display: block" %>
-        <select name="length" id="length" data-action="input#setLength" data-input-target="lengthselector">
+      <div class="staff-between col-3">
+        <div class="subtitle">Course Length:</div>
+        <select name="length" id="length" class="length-select" data-action="input#setLength" data-input-target="lengthselector">
           <option selected="selected" value="1">9</option>
           <option value="2">18</option>
         </select>
       </div>
 
-      <div class="stack-left">
-        <div class="row-center" id="labels1"></div>
-        <div class="row-center" id="parform1"></div>
-        <div class="row-center" id="labels2"></div>
-        <div class="row-center" id="parform2"></div>
+      <div class="stack-variant-pars">
+        <div class="row-par" id="labels1"></div>
+        <div class="row-par" id="parform1"></div>
+        <div class="row-par" id="labels2"></div>
+        <div class="row-par" id="parform2"></div>
       </div>
+      <%= form.submit "Save Layout", class:"btn-flat" %>
     </div>
 
     <%= form.number_field :course_id, id: :variant_course_id, class:"form-field", value:@course_id, type: :hidden %>
     <%= form.text_field :pars, class:"form-field", data: { target:"input.variantparfield" }, type: :hidden %>
 
-    <div class="row-left col-2">
-      <%= form.submit "Save Layout", class:"btn-flat" %>
-    </div>
+    
 
   <% end %>
 </div>

@@ -1,0 +1,98 @@
+@use 'colors';
+@use 'queries' as q;
+
+.col-tablet {
+	@include q.media('<=desktop') {
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+
+.holenumber {
+	font-family: "Righteous";
+	font-size: 25pt;
+	color: colors.$info;
+	width: 11.11%;
+	margin: .1rem;
+}
+
+.number-select {
+	font-size: 2rem;
+	width: 11.11%;
+	background-color: transparent;
+	margin: .1rem;
+	border: none;
+}
+
+.length-select {
+	font-family: "Righteous", sans-serif;
+	font-size: 1.8rem;
+	background-color: transparent;
+	border: 1px solid colors.$dark;
+	border-radius: 5px;
+	color: colors.$dark;
+}
+
+.variant-card {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	border: 1px solid green;
+
+	@include q.media('<desktop') {
+		flex-direction: column;
+	}
+
+	.variant-title {
+		display: flex;
+		font-family: "Monoton";
+		font-size: 50pt;
+		flex-wrap: wrap;
+		padding: 1rem;
+		justify-content: center;
+		border: 1px solid white;
+
+		@include q.media('<desktop') {
+			width: 100%;
+		}
+
+		@include q.media('>=desktop') {
+			width: 40%;
+		}
+
+		@include q.media('<=tablet') {
+			font-size: 35pt;
+		}
+
+		@include q.media('<=phone') {
+			font-size: 25pt;
+		}		
+	}
+
+	.variant-form {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+
+		.stack-variant-pars {
+			display: flex;
+			flex-direction: column;
+
+			@include q.media('<=phone') {
+				flex-direction: row;
+			}
+
+			.row-par {
+				display: flex;
+				justify-content: center;
+				border: 2px solid orange;
+
+				@include q.media('<=phone') {
+					flex-direction: column;
+					width: 25%;
+				}
+			}
+		}
+	}
+}
+

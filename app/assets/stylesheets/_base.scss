@@ -39,7 +39,6 @@ img {
   display: none;
 }
 
-
 // Blank container
 .container-fluid {
 	width: 99vw;
@@ -60,11 +59,11 @@ img {
 	width: 100%;
 }
 
-
 // Flexbox containers
 %stack {
 	display: flex;
 	flex-direction: column;
+	border: 1px solid red;
 }
 
 .stack {
@@ -87,9 +86,11 @@ img {
 // Rows
 %row {
 	display: flex;
+	border: 1px solid blue;
 
 	@include q.media('<=465px') {
 		flex-direction: column;
+		justify-content: center;
 	}
 }
 
@@ -111,11 +112,47 @@ img {
 
 	&-between {
 		@extend %row;
-		justify-content: space-between;
+		@include q.media('>465px') {
+			justify-content: space-between;
+		}
+
 	}
 
 	&-even {
 		@extend %row;
+		@include q.media('>465px') {
+			justify-content: space-evenly;
+		}
+	}
+}
+
+%staff {
+	display: flex;
+}
+
+.staff {
+	&-left {
+		@extend %staff;
+		justify-content: flex-start;
+	}
+
+	&-right {
+		@extend %staff;
+		justify-content: flex-end;
+	}
+
+	&-center {
+		@extend %staff;
+		justify-content: center;
+	}
+
+	&-between {
+		@extend %staff;
+		justify-content: space-between;
+	}
+
+	&-even {
+		@extend %staff;
 		justify-content: space-evenly;
 	}
 }

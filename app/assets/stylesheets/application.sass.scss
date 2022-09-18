@@ -4,9 +4,12 @@
 // responsive media query library
 @use 'queries';
 
-// semantic and layout elements
+// layout elements
 @use 'base';
 @use 'forms';
 @use 'nav';
 @use 'button';
 @use 'typography';
+
+// semantic classes
+@use 'variantinput';

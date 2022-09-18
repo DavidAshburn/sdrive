@@ -1,35 +1,24 @@
 @use 'colors';
 
 nav {
-
 	top: 10px;
 	left: 0;
 	height: 3rem;
-
 	width: 100vw;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 2rem;
 	padding-right: 2rem;
-
 	background-color: colors.$primary;
 	color: colors.$dark;
-
 	border-radius: 2rem 0 0 2rem;
 
 	.img-link {
 		border-radius: 50%;
 		height: 3rem;
-		align-self: center;
-	}
-
-	ul {
-
-		li {
-
-		}
-
+		min-width: 3rem;
+		display: block;
 	}
 }
 
@@ -38,7 +27,6 @@ nav {
 	font-weight: bold;
 	text-decoration: none;
 }
-
 
 %nav-row {
 	display: flex;
