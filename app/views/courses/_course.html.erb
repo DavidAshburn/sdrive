@@ -1,13 +1,17 @@
-
 <div id="<%= dom_id course %>">
   <div class="stack-center col-12">
     <%= link_to "#{course.name}", course, class:"subtitle" %>
     <div class="stack-center"> 
       <%= "#{course.city}, #{course.state}" %>
     </div>
-    <% course.variants.each do |variant| %>
-      <h6 class="subtitle"><%= variant.name %></h6>
-    <% end %>
+    <div class="row-center">
+      <% course.variants.each_with_index do |variant, x| %>
+        <div class="subtitle-minor"><%= variant.name %></div>
+        <% if course.variants.size > 1 && x != course.variants.size - 1%>
+          <div class="subtitle">--</div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -44,7 +44,6 @@ img {
 	width: 99vw;
 }
 
-
 // Grid with Flexbox, I would rather use % instead of vw, these don't scale to the container
 
 @each $val in $sizes {
@@ -63,6 +62,7 @@ img {
 %stack {
 	display: flex;
 	flex-direction: column;
+	border: 1px solid red;
 }
 
 .stack {
@@ -85,6 +85,7 @@ img {
 // Rows
 %row {
 	display: flex;
+	border: 1px solid blue;
 
 	@include q.media('<=465px') {
 		flex-direction: column;
@@ -184,3 +185,57 @@ img {
 }
 
 // Testing Classes
+
+%square {
+	width: 10rem;
+	height: 10rem;
+}
+.square1 {
+	@extend %square;
+	background-color: colors.$turqoise;
+}
+.square2 {
+	@extend %square;
+	background-color: colors.$aqua;
+
+}
+.square3 {
+	@extend %square;
+	background-color: colors.$cream;
+
+}
+.square4 {
+	@extend %square;
+	background-color: colors.$peach;
+
+}
+.square5 {
+	@extend %square;
+	background-color: colors.$coral;
+
+}
+.square6 {
+	@extend %square;
+	background-color: colors.$slime;
+
+}
+.square7 {
+	@extend %square;
+	background-color: colors.$teal;
+
+}
+.square8 {
+	@extend %square;
+	background-color: colors.$white;
+
+}
+.square9{
+	@extend %square;
+	background-color: colors.$grey;
+
+}
+
+.square10 {
+	@extend %square;
+	background-color: colors.$charcoal;
+}

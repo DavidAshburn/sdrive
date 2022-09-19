@@ -19,6 +19,18 @@
 	font-family: "Righteous";
 	font-size: 25pt;
 	color: colors.$dark;
+
+	&-minor {
+		font-family: "Righteous";
+		font-size: 20pt;
+		color: colors.$info;
+	}
+
+	&-small {
+		font-family: "Righteous";
+		font-size: 16pt;
+		color: colors.$info;
+	}
 }
 
 .listtitle {

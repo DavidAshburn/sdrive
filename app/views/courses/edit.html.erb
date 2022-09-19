@@ -12,4 +12,7 @@
     <%= link_to "Your Courses", courses_path, class:"group-button" %>
     <%= link_to "Home", home_profile_path, class:"group-button" %>
   </div>
+  <div class="row-left">
+    <%= button_to "Delete", @course, method: :delete, class:"btn-sm-danger" %>
+  </div>
 </div>

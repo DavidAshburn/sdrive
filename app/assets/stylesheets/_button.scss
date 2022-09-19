@@ -70,6 +70,21 @@ $font: "Raleway";
 	}
 }
 
+.btn-sm-danger {
+	@extend %btn;
+	@include colors.color-scheme(colors.$scheme-danger...);
+	margin: .5rem;
+	padding: .5rem 1rem;
+
+	&:hover {
+		@include colors.color-scheme(colors.$scheme-warning ...);
+	}
+
+	&:active {
+		@include colors.color-scheme(colors.$scheme-dark ...);
+	}
+}
+
 .btn-close {
 	background-color: transparent;
 	border: 1px solid colors.$dark;
@@ -84,16 +99,14 @@ $font: "Raleway";
 	padding: 1rem 2rem;
 
 	.group-button {
-		background-color: colors.$secondary;
-		color: colors.$dark;
+		@include colors.color-scheme(colors.$scheme-secondary ...);
 		text-decoration: none;
 		margin: 0;
 		padding: 1rem 2rem;
 	}
 
 	.group-button-warn {
-		background-color: colors.$warning;
-		color: colors.$dark;
+		@include colors.color-scheme(colors.$scheme-warning ...);
 		text-decoration: none;
 		margin: 0;
 		padding: 1rem 2rem;
@@ -117,8 +130,35 @@ $font: "Raleway";
 }
 
 .group-button:hover {
-  background-color: colors.$primary;
-  color: colors.$info;
+  @include colors.color-scheme(colors.$scheme-primary ...);
+}
+
+.group-button:active {
+  @include colors.color-scheme(colors.$scheme-dark...);
+}
+
+.btn-group .group-button-warn:first-child {
+	border-radius: 3.2rem 0 0 .8rem;
+}
+
+.btn-group .group-button-warn:not(:last-child) {
+	border-right: none;
+}
+
+.btn-group .group-button-warn:not(:first-child) {
+	border-left: 1px solid colors.$border;
+}
+
+.btn-group .group-button-warn:last-child {
+	border-radius: 0 .8rem 3.2rem 0;
+}
+
+.group-button-warn:hover {
+  @include colors.color-scheme(colors.$scheme-danger...);
+}
+
+.group-button-warn:active {
+  @include colors.color-scheme(colors.$scheme-dark...);
 }
 
 .btn-group:after {

@@ -3,31 +3,22 @@
   <div class="listtitle"><%= " #{@course.name} " %></div>
   <div class="muted"><%= " #{@course.city}, #{@course.state} " %></div>
 
-  <table>
+  <div class="stack-center col-12">
     <% @course.variants.each do |variant| %>
-      <thead>
-        <td>
+        <div class="row-center col-8">
           <%= link_to variant.name, edit_variant_path(variant.id, :course_id => @course.id), class:"btn-flat" %>
-        </td>
-        <td>
-          <%= link_to "Play a Round", new_card_path( variant_id: variant.id ), class:"btn-flat" %>
-        </td>
-      </thead>
-      <tbody>
-        <tr>
+          <%= link_to "Play a Round", new_card_path( variant_id: variant.id ), class:"btn-warn" %>
+        </div>
+        <div class="row-center col-8">
           <% variant.pars.each_char do |par| %>
-            <td>par</td>
+            <div class="holenumber">par</div>
           <% end %>
-        </tr>
-      </tbody>
+        </div>
     <% end %>
-  </table>
+  </div>
   <div class="btn-group">
     <%= link_to "Edit this course", edit_course_path(@course), class:"group-button" %>
     <%= link_to "Course list", courses_path, class:"group-button" %>
     <%= link_to "Add a layout", new_variant_path(:course_id => @course.id), class:"group-button" %>
-  </div>
-  <div class="row-left">
-    <%= button_to "Delete", @course, method: :delete, class:"btn-warn" %>
   </div>
 </div>

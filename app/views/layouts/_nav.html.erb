@@ -11,6 +11,13 @@
         <button class="nav-drop-btn" data-action="navbar#hideDrop">Close</button>
       </div>
     </div>
+    <div class="nav-dropdown">
+      <button class="nav-drop-btn" data-action="navbar#showDropAlt">Testing</button>
+      <div class="nav-drop-content hidden" data-navbar-target="altdrop">
+        <%= link_to "Colors", test_colors_path, class:"nav-link" %>
+        <button class="nav-drop-btn" data-action="navbar#hideDropAlt">Close</button>
+      </div>
+    </div>
   </div>
   <div class="nav-right">
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link-info" %>

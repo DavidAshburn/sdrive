@@ -12,3 +12,6 @@ application.register("input", InputController)
 
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
+
+import VareditController from "./varedit_controller"
+application.register("varedit", VareditController)

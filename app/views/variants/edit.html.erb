@@ -1,4 +1,4 @@
-<div class="stack-left col-12">
+<div class="stack-left col-12" data-controller="varedit">
   <div class="title">Edit Variant</div>
   <%= form_with(model: @variant) do |form| %>
     <% if @variant.errors.any? %>
@@ -19,45 +19,37 @@
 
   <% if @variant.pars %>
     <% parray = @variant.pars.split('') %>
-
-
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Par</th>
-        </tr>
-      </thead>
-      <tbody>
+    <div class="stack-center col-wide">
+        <div class="row-center">
+          <div class="subtitle">#</div>
+          <div class="subtitle">Par</div>
+        </div>
         <% (0..8).each do |x| %>
-          <tr>
-            <td><b><%= x + 1 %></b></td>
-            <td>
-              <%= form.text_field :pars, class:"form-field", value:parray[x] %>
-            </td>
-          </tr>
+          <div class="row-center">
+            <div class="subtitle"><%= x + 1 %></div>
+            <%= form.text_field :pars, class:"form-field", data_input_target:"paredit" %>
+          </div>
         <% end %>
         <% if @variant.length == 18 %>
           <% (9..17).each do |x| %>
-          <tr>
-            <td><b><%= x + 1 %></b></td>
-            <td>
-              <%= form.text_field :pars, class:"form-field", value:parray[x] %>
-            </td>
-          </tr>
+          <div class="row-center">
+            <div class="subtitle"><%= x + 1 %></div>
+            <%= form.text_field :pars, class:"form-field", data_input_target:"paredit" %>
+          </div>
+          <% end %>
         <% end %>
-        <% end %>
-      </tbody>
-    </table>
+    </div>
   <% end %>
 
-  <%= form.submit "Edit Layout", class:"btn-flat" %>
-
-  <% end %>
+  <%= form.submit "Update", class:"btn-flat" %>
 
   <div class="btn-group">
     <%= link_to "Back to Course", @course, class:"group-button" %>
-    <%= link_to "Destroy this layout", @variant, class:"group-button", method: :delete %>
     <%= link_to "Home", home_profile_path, class:"group-button" %>
+  </div>
+  <% end %>
+
+  <div class="row-left">
+    <%= button_to "Delete", @variant, method: :delete, class:"btn-sm-danger" %>
   </div>
 </div>

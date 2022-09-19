@@ -1,10 +1,9 @@
-<table>
-<tr>
-  <td><%= variant.name %></td>
-  <td><%= variant.length %></td>
-  <td><%= variant.pars.split(', ') %></td>
-</tr>
-<tr>
-  <td><%= variant.course_id %></td>
-</tr>
-</table>
+<div class="stack-center">
+  <div class="subtitle"><%= variant.name %></div>
+  <div class="subtitle-minor"><%= "#{variant.length} Holes" %></div>
+  <div class="row-even col-wide">
+    <% variant.pars.split('').each do |par| %>
+      <div class="holenumber">par</div>
+    <% end %>
+  </div>
+</div>
