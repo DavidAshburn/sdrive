@@ -4,7 +4,8 @@ export default class extends Controller {
 static targets = [ 
   "lengthselector",   //variant_new
   "variantparfield",
-  "par"
+  "par",
+  "form"
   ]
 
   initialize() {
@@ -42,11 +43,16 @@ static targets = [
       label_row.classList.add("holenumber");
       label_row.innerText = i;
 
-      let input_row = document.createElement("input");
-      input_row.setAttribute("type", "text");
-      input_row.setAttribute("data-input-target", "par");
-      input_row.setAttribute("value", "3");
-      input_row.classList.add("number-select");
+      let input_row = document.createElement("div");
+      input_row.classList.add("numberinput-container")
+
+      let input_box = document.createElement("input");
+      input_box.setAttribute("type", "text");
+      input_box.setAttribute("data-input-target", "par");
+      input_box.setAttribute("value", "3");
+      input_box.classList.add("number-select");
+
+      input_row.appendChild(input_box);
 
       if(i < 10) {
         labels1_out.appendChild(label_row);
@@ -79,6 +85,13 @@ static targets = [
       parbox2.appendChild(parbox2_out);
       labels2.appendChild(labels2_out);
     }
+  }
+
+  submitForm(event) {
+    let out = [];
+    this.parTargets.forEach(element => out.push(element.innerText));
+    this.variantparfieldTarget.innerText = out.join('');
+    console.log(out);
   }
 
   setPars() {

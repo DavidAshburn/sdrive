@@ -25,12 +25,14 @@
 }
 
 .number-select {
-
 	font-size: 2rem;
 	background-color: transparent;
 	margin: .1rem;
 	border: none;
+	width: 2.5rem;
+}
 
+.numberinput-container {
 	@include q.media('<=phone') {
 		width: 20vw;
 	}

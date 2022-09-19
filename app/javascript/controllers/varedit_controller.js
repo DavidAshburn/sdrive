@@ -1,14 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-static targets = [ "paredit" ]
+static targets = [ "paredit", "parstring", "parstringout" ]
 
-initialize() {
-
-}
 
 connect() {
-	
+	this.pars = this.parstringTarget.innerText;
+	console.log(this.pars);
 }
 
 

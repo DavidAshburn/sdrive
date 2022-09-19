@@ -18,7 +18,8 @@
   </div>
 
   <% if @variant.pars %>
-    <% parray = @variant.pars.split('') %>
+    <div class="subtitle" data-varedit-target="parstring"><%= @variant.pars %></div>
+
     <div class="stack-center col-wide">
         <div class="row-center">
           <div class="subtitle">#</div>
@@ -27,20 +28,21 @@
         <% (0..8).each do |x| %>
           <div class="row-center">
             <div class="subtitle"><%= x + 1 %></div>
-            <%= form.text_field :pars, class:"form-field", data_input_target:"paredit" %>
+            <input type="text", class="form-field", data-varedit-target="paredit">
           </div>
         <% end %>
         <% if @variant.length == 18 %>
           <% (9..17).each do |x| %>
           <div class="row-center">
             <div class="subtitle"><%= x + 1 %></div>
-            <%= form.text_field :pars, class:"form-field", data_input_target:"paredit" %>
+            <input type="text", class="form-field", data-varedit-target="paredit">
           </div>
           <% end %>
         <% end %>
     </div>
   <% end %>
 
+  <%= form.text_field :pars, data_varedit_target:"parstringout", type: :hidden %>
   <%= form.submit "Update", class:"btn-flat" %>
 
   <div class="btn-group">
@@ -52,4 +54,6 @@
   <div class="row-left">
     <%= button_to "Delete", @variant, method: :delete, class:"btn-sm-danger" %>
   </div>
+
+
 </div>

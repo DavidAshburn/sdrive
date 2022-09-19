@@ -1,45 +1,45 @@
-<div data-controller="input">
-  <%= form_with(model: variant) do |form| %>
-    <% if variant.errors.any? %>
-      <div class="container-alert" data-controller="alert">
-        <div class="alert" role="alert">
-          <h2><%= pluralize(variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
-
+<%= form_with(model: variant,
+              data: {
+                controller: "input",
+                target: "input.form",
+                action: "ajax:beforeSend->input#submitForm"
+              }) do |form| %>
+  <% if variant.errors.any? %>
+    <div class="container-alert" data-controller="alert">
+      <div class="alert" role="alert">
+        <h2><%= pluralize(variant.errors.count, "error") %> prohibited this variant from being saved:</h2>
           <ul>
-            <% variant.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-          <button class="btn-close" data-action="alert#close" aria-label="Close"><i class="fa-solid fa-x"></i></button>
-        </div>
-      </div>
-    <% end %>
-    <% if @variant.name == nil %>
-      <% @variant.name = "Enter Name" %>
-    <% end %>
-    <div class="stack-center">
-      <%= form.text_field :name, class:"rail-field", placeholder: @variant.name %>
-      <div class="staff-center col-4">
-        <div class="subtitle">Course Length:</div>
-        <select name="length" id="length" class="length-select" data-action="input#setLength" data-input-target="lengthselector">
-          <option selected="selected" value="1">9</option>
-          <option value="2">18</option>
-        </select>
-      </div>
-
-      <div class="stack-variant-pars">
-        <div class="row-par" id="labels1"></div>
-        <div class="row-par" id="parform1"></div>
-        <div class="row-par" id="labels2"></div>
-        <div class="row-par" id="parform2"></div>
-      </div>
-      <%= form.submit "Save Layout", class:"btn-flat" %>
+          <% variant.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+        <button class="btn-close" data-action="alert#close" aria-label="Close"><i class="fa-solid fa-x"></i></button>
     </div>
-
-    <%= form.number_field :course_id, id: :variant_course_id, class:"form-field", value:@course_id, type: :hidden %>
-    <%= form.text_field :pars, class:"form-field", data: { target:"input.variantparfield" }, type: :hidden %>
-
-    
-
+    </div>
   <% end %>
-</div>
+
+  <% if @variant.name == nil %>
+    <% @variant.name = "Enter Name" %>
+  <% end %>
+  <div class="stack-center">
+  <%= form.text_field :name, class:"rail-field", placeholder: @variant.name %>
+    <div class="staff-center col-4">
+      <div class="subtitle">Course Length:</div>
+      <select name="length" id="length" class="length-select" data-action="input#setLength" data-input-target="lengthselector">
+        <option selected="selected" value="1">9</option>
+        <option value="2">18</option>
+      </select>
+    </div>
+      <div class="stack-variant-pars">
+      <div class="row-par" id="labels1"></div>
+      <div class="row-par" id="parform1"></div>
+      <div class="row-par" id="labels2"></div>
+      <div class="row-par" id="parform2"></div>
+    </div>
+    
+  </div>
+    <%= form.number_field :course_id, id: :variant_course_id, class:"form-field", value:@course_id, type: :hidden %>
+  <input class="hidden" data-input-target="variantparfield" type="text" name="variant[pars]" id="variant_pars">
+
+  <%= form.submit "Save Layout", class:"btn-flat" %>
+  <% end %>
